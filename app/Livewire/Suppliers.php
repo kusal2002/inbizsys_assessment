@@ -13,7 +13,7 @@ class Suppliers extends Component
 
     #[\Livewire\Attributes\Url]
     public $search = '';
-    
+
     public $supplierId;
     public $name, $email, $phone, $address;
     public $isEdit = false;

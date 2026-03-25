@@ -248,35 +248,35 @@
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         background-color: #fff;
     }
-    
+
     .swal2-title {
         color: #1f2937;
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 12px;
     }
-    
+
     .swal2-html-container {
         color: #6b7280;
         font-size: 15px;
         margin-bottom: 24px;
     }
-    
+
     .swal2-icon.swal2-warning {
         border-color: #fbbf24;
         color: #fbbf24;
     }
-    
+
     .swal2-icon.swal2-success {
         border-color: #10b981;
         color: #10b981;
     }
-    
+
     .swal2-actions {
         gap: 12px;
         margin-top: 24px;
     }
-    
+
     .swal2-confirm {
         background-color: #dc2626 !important;
         color: white !important;
@@ -287,13 +287,13 @@
         font-size: 14px !important;
         transition: all 0.2s !important;
     }
-    
+
     .swal2-confirm:hover {
         background-color: #b91c1c !important;
         transform: translateY(-2px) !important;
         box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.2) !important;
     }
-    
+
     .swal2-cancel {
         background-color: #fff !important;
         color: #1f2937 !important;
@@ -304,7 +304,7 @@
         font-size: 14px !important;
         transition: all 0.2s !important;
     }
-    
+
     .swal2-cancel:hover {
         background-color: #f3f4f6 !important;
         border-color: #111827 !important;
@@ -329,7 +329,7 @@
             if (result.isConfirmed) {
                 // Call the Livewire delete method
                 @this.call('delete', supplierId);
-                
+
                 Swal.fire({
                     title: "Deleted!",
                     text: "The supplier has been deleted successfully.",
