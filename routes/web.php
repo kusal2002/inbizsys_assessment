@@ -1,8 +1,10 @@
 <?php
 
+use App\Livewire\Suppliers;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
+Route::get('/suppliers', Suppliers::class)->name('suppliers.index');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
