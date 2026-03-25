@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Supplier;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -10,17 +11,25 @@ class Suppliers extends Component
 {
     use WithPagination;
 
+    #[\Livewire\Attributes\Url]
     public $search = '';
+
     public $supplierId;
     public $name, $email, $phone, $address;
     public $isEdit = false;
+    public $showModal = false;
 
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:suppliers,email',
-        'phone' => 'nullable|string|max:20',
+        'phone' => 'nullable|string|max:20|regex:/^[0-9\-\+\s]+$/',
         'address' => 'nullable|string',
     ];
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
@@ -37,7 +46,7 @@ class Suppliers extends Component
     {
         $this->resetForm();
         $this->isEdit = false;
-        $this->dispatch('show-modal');
+        $this->showModal = true;
     }
 
     public function edit($id)
@@ -49,7 +58,7 @@ class Suppliers extends Component
         $this->phone = $supplier->phone;
         $this->address = $supplier->address;
         $this->isEdit = true;
-        $this->dispatch('show-modal');
+        $this->showModal = true;
     }
 
     public function save()
@@ -79,7 +88,7 @@ class Suppliers extends Component
         }
 
         $this->resetForm();
-        $this->dispatch('hide-modal');
+        $this->showModal = false;
     }
 
     public function delete($id)
@@ -88,8 +97,9 @@ class Suppliers extends Component
         session()->flash('message', 'Supplier deleted successfully.');
     }
 
-    private function resetForm()
+    public function resetForm()
     {
         $this->reset(['supplierId', 'name', 'email', 'phone', 'address', 'isEdit']);
+        $this->showModal = false;
     }
 }
