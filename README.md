@@ -1,52 +1,202 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Suppliers CRUD Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A professional and modern suppliers management application built with **Laravel 12**, **Livewire 3**, and **Tailwind CSS**. This application allows users to create, read, update, and delete supplier records with a clean, responsive user interface.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Core CRUD Operations
+- **Create**: Add new suppliers with validated form inputs
+- **Read**: Display suppliers in a clean, responsive table with pagination (4 items per page)
+- **Update**: Edit supplier details with inline form validation
+- **Delete**: Remove suppliers with confirmation alerts
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Advanced Features
+- **Live Search**: Search suppliers by name or email in real-time
+- **Pagination**: Navigate through suppliers with page links
+- **Print View**: Generate and print supplier lists in A4 format with footer containing:
+  - Page number (left-aligned)
+  - Logged-in user name (right-aligned)
+- **Responsive Design**: Mobile-friendly interface with hidden columns on smaller screens
+- **Form Validation**: 
+  - Email format validation
+  - Email uniqueness enforcement
+  - Phone number regex validation
+  - Required field checks
+- **SweetAlert Confirmations**: User-friendly confirmation dialogs before deletions
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### UI/UX
+- **Professional Design**: Clean, modern interface using Tailwind CSS
+- **Modal Forms**: Create and edit suppliers in pop-up modals
+- **Consistent Styling**: Unified color scheme and spacing
+- **Accessibility**: Proper labels, icons, and hover states
 
-## Learning Laravel
+### Dashboard
+- **Total Suppliers Card**: Display total supplier count with quick access link
+- **Overview Metrics**: Visual representation of supplier data
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Tech Stack
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Backend**: Laravel 12 (PHP)
+- **Frontend**: Livewire 3 (Real-time reactive components)
+- **Styling**: Tailwind CSS
+- **Database**: MySQL
+- **Authentication**: Laravel Breeze
+- **UI Components**: Blade templates with Heroicons
 
-## Laravel Sponsors
+## Requirements
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- PHP 8.2+
+- Composer
+- MySQL 5.7+
+- Node.js & npm
 
-### Premium Partners
+## Installation
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd inbizsys_assessment
+```
 
-## Contributing
+### 2. Install Dependencies
+```bash
+composer install
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Environment Setup
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Code of Conduct
+### 4. Configure Database
+Update your `.env` file with database credentials:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=inbizsys_test
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 5. Run Migrations
+```bash
+php artisan migrate
+```
+
+### 6. Build Assets
+```bash
+npm run build
+```
+
+For development with watch mode:
+```bash
+npm run dev
+```
+
+### 7. Start Development Server
+```bash
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`
+
+## Usage
+
+### Authentication
+1. Register a new account or use the default credentials
+2. Login to access the dashboard
+
+### Managing Suppliers
+1. **View Suppliers**: Navigate to `/suppliers` from the dashboard
+2. **Add Supplier**: Click "Add Supplier" button and fill the form
+3. **Edit Supplier**: Click the edit icon on any supplier row
+4. **Delete Supplier**: Click the delete icon and confirm
+5. **Search**: Use the search bar to filter by name or email
+6. **Pagination**: Navigate to different pages (4 suppliers per page)
+7. **Print**: Click "Print List" to generate and print a formatted list
+
+### Dashboard
+- View total supplier count
+- Quick access button to view all suppliers
+
+## API Endpoints
+
+- `GET /suppliers` - Display suppliers list (Livewire component)
+- `GET /suppliers/print` - Print-friendly suppliers view
+- `GET /dashboard` - Dashboard with supplier metrics
+
+## Validation Rules
+
+### Supplier Fields
+- **Name**: Required, string, max 255 characters
+- **Email**: Required, valid email format, unique
+- **Phone**: Optional, string, max 20 characters, numeric format (digits, +, -)
+- **Address**: Optional, text field
+
+## Database Schema
+
+### Suppliers Table
+```sql
+CREATE TABLE suppliers (
+    id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone VARCHAR(20),
+    address TEXT,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+```
+
+## Performance Optimizations
+
+- Pagination to limit data queries
+- Indexed unique email column
+- Lazy-loaded search with `when()` query builder
+- Livewire's WithPagination trait for efficient pagination
+- Proper wire:key bindings for list rendering
+
+## Development Notes
+
+### Livewire Components
+- `Suppliers.php`: Main component handling all CRUD operations
+- Live search updates pagination automatically
+- Form validation happens in real-time
+
+### Views
+- `suppliers.blade.php`: Main suppliers management interface
+- `print.blade.php`: Print-optimized layout with footer
+- `modal.blade.php`: Reusable modal component for forms
+
+## Testing
+
+Run tests with:
+```bash
+php artisan test
+```
+
+## Best Practices Implemented
+
+✅ Laravel best practices and conventions  
+✅ Clean, readable, maintainable code  
+✅ Proper naming conventions  
+✅ Optimized database queries  
+✅ Comprehensive validation  
+✅ Responsive UI/UX design  
+✅ Security (CSRF protection, authentication)  
+✅ Livewire dynamic interactions  
+
+## License
+
+This project is open-sourced software licensed under the [MIT license](LICENSE).
+
+## Support
+
+For issues or support, please create an issue in the repository.
+
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
